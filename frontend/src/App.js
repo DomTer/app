@@ -1,10 +1,10 @@
 import React from 'react';
 import './App.css';
-import { ApolloProvider, Query } from "react-apollo";
+import { ApolloProvider } from "react-apollo";
 import ApolloClient from "apollo-boost";
-import  ShowUsers from './components/Users/ShowUsers';
+import ShowUsers from './components/Users/ShowUsers';
 import AddUser from "./components/Users/AddUser";
-import Login from "./components/Login/Login";
+import SignUp from "./components/Login/SignUp";
 
 const client = new ApolloClient({
   uri: "http://localhost:4000/graphql"
@@ -15,7 +15,7 @@ function App() {
       <ApolloProvider key={'1'} client={client}>
         <ShowUsers />
         <AddUser />
-        <Login  />
+        <SignUp  />
       </ApolloProvider>
   );
 }
