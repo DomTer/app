@@ -48,36 +48,16 @@ const AddUser = () => {
                     >
                         {console.log(Object.keys(input))}
 
-                        <input
-                            name={'mail'}
-                            ref={node => {
-                                input.mail = node;
-                            }}
-                        />
-                        <input
-                            name={'password'}
-                            ref={node => {
-                                input.password = node;
-                            }}
-                        />
-                        <input
-                            name={'gender'}
-                            ref={node => {
-                                input.gender = node;
-                            }}
-                        />
-                        <input
-                            name={'forename'}
-                            ref={node => {
-                                input.forename = node;
-                            }}
-                        />
-                        <input
-                            name={'surname'}
-                            ref={node => {
-                                input.surname = node;
-                            }}
-                        />
+                        {Object.keys(input).map((key) => {
+                            return <input
+                                name={key}
+                                ref={node => {
+                                    input[key] = node;
+                                }}
+                            />
+                        })}
+
+
 
                         <button type="submit">Nutzer anlegen.</button>
                     </form>
