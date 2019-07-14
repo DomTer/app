@@ -54,6 +54,7 @@ const genders = [
 ];
 
 export default function SignUp() {
+
     const classes = useStyles();
     const [values, setValues] = React.useState({
         mail: '',
@@ -68,13 +69,22 @@ export default function SignUp() {
     };
 
     return (
+        <Mutation mutation={ADD_USER}>
+            {(addUser, { data }) => (
+
         <form
             className={classes.container}
             noValidate
             autoComplete="on"
             onSubmit={e => {
                 e.preventDefault();
-               console.log(values)
+                addUser({ variables: values});
+
+                values.mail = "";
+                values.password ="";
+                values.gender = "";
+                values.forename = "";
+                values.surname = "";
             }}
         >
             <TextField
@@ -140,5 +150,7 @@ export default function SignUp() {
             >Primary
             </Button>
         </form>
+            )}
+        </Mutation>
     );
 }
