@@ -46,8 +46,6 @@ const AddUser = () => {
                             input.surname.value = "";
                         }}
                     >
-                        {console.log(Object.keys(input))}
-
                         {Object.keys(input).map((key) => {
                             return <input
                                 name={key}

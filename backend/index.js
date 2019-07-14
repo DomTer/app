@@ -6,9 +6,9 @@ const { User } = require('./models');
 
 const typeDefs = gql`
     type User {
-        id: ID!
-        mail: String!
-        password: String!
+        id: ID
+        mail: String
+        password: String
         gender: String
         forename: String
         surname: String
@@ -17,7 +17,7 @@ const typeDefs = gql`
         getUsers: [User]
     }
     type Mutation {
-        addUser(mail: String!, password: String!, gender: String, forename: String, surname: String): User
+        addUser(mail: String, password: String, gender: String, forename: String, surname: String): User
     }
 `;
 
