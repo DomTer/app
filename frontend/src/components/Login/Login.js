@@ -2,9 +2,10 @@ import React from 'react';
 import gql from "graphql-tag";
 import { Mutation } from "react-apollo";
 
-const ADD_TODO = gql`
-    mutation AddUser($type: String!) {
-        addUser(mail: "String!", password: "String!", gender: "String", forename: "String", surname: "String") {
+const ADD_USER = gql`
+    mutation AddUser($mail: String!, $password: String!, $gender: String, $forename: String, $surname: String) {
+        addUser(mail: $mail, password: $password, gender: $gender, forename: $forename, surname: $surname) {
+            id
             mail
             password
             gender
@@ -15,25 +16,34 @@ const ADD_TODO = gql`
 `;
 
 const AddUser = () => {
-    let input;
+    let input = {
+        mail: '',
+        password: '',
+        gender: '',
+        forename: '',
+        surname: '',
+    };
 
     return (
-        <Mutation mutation={ADD_TODO}>
+        <Mutation mutation={ADD_USER}>
             {(addUser, { data }) => (
                 <div>
                     <form
                         onSubmit={e => {
                             e.preventDefault();
-                            addUser({ variables: { type: input.value } });
-                            input.value = "";
+                            addUser({ variables: { mail: input.mail.value } });
+                            input.mail.value = "";
                         }}
                     >
                         <input
+                            name={'mail'}
                             ref={node => {
-                                input = node;
+                                input.mail = node;
                             }}
                         />
-                        <button type="submit">Add Todo</button>
+
+
+                        <button type="submit">Nutzer anlegen.</button>
                     </form>
                 </div>
             )}

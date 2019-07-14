@@ -1,7 +1,7 @@
 {
   "name": "backend",
   "version": "1.0.0",
-  "description": "apollo-server on node.js to pass data from mongoDB to react frontend with apollo-client",
+  "description": "apollo-server on node.js to handle data between mongoDB and react frontend with apollo-client",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",

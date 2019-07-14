@@ -10,6 +10,6 @@ const db = {
 };
 
 const url =  `mongodb+srv://${db.user}:${db.pass}@${db.host}/${db.name}?retryWrites=true&w=majority'`;
-console.log(url);
+
 mongoose.connect(url, { useNewUrlParser: true });
 mongoose.connection.once('open', () => console.log(`Connected to mongo at ${url}`));
