@@ -2,7 +2,7 @@ import React from 'react';
 import {Query} from "react-apollo";
 import {gql} from "apollo-boost";
 
-const Users = () => (
+const ShowUsers = () => (
     <Query
         query={gql`
       {
@@ -35,4 +35,4 @@ const Users = () => (
     </Query>
 );
 
-export  default Users;
+export  default ShowUsers;
