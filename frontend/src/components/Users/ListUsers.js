@@ -9,7 +9,7 @@ import TableHead from "@material-ui/core/TableHead";
 import TableBody from "@material-ui/core/TableBody";
 import {makeStyles} from "@material-ui/core";
 
-import DeleteUserButton from "./deleteUserButton";
+import DeleteUserButton from "./DeleteUserButton";
 
 const useStyles = makeStyles(theme => ({
     root: {

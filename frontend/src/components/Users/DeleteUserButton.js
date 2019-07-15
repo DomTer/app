@@ -33,17 +33,16 @@ const DELETE_USER = gql`
     }
 `;
 
-export default function DeleteUserButton(userId) {
+export default function DeleteUserButton({userId}) {
     const classes = useStyles();
-console.log( {_id: userId} );
     return (
         <Mutation mutation={DELETE_USER}>
-            {(deleteUser, {data}) => (
+            {(deleteUser) => (
                 <Button variant="contained"
                         color="secondary"
                         className={classes.button}
                         onClick={() => {
-                            deleteUser({ variables: {_id: "507f1f77bcf86cd799439011"} });
+                            deleteUser({ variables: {_id: userId} });
                         }}
                 >Delete
                     <DeleteIcon className={classes.rightIcon}/>
