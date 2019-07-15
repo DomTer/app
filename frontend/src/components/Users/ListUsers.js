@@ -9,6 +9,8 @@ import TableHead from "@material-ui/core/TableHead";
 import TableBody from "@material-ui/core/TableBody";
 import {makeStyles} from "@material-ui/core";
 
+import DeleteUserButton from "./deleteUserButton";
+
 const useStyles = makeStyles(theme => ({
     root: {
         width: '100%',
@@ -39,6 +41,7 @@ export default function ListUsers(){
                             <TableCell align="left">Nachname</TableCell>
                             <TableCell align="left">E-Mail</TableCell>
                             <TableCell align="left">Passwort</TableCell>
+                            <TableCell align="right"></TableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>
@@ -81,6 +84,9 @@ const GetUsers = () => (
                     <TableCell align="left">{surname}</TableCell>
                     <TableCell align="left">{mail}</TableCell>
                     <TableCell align="left">{password}</TableCell>
+                    <TableCell align="right">
+                        <DeleteUserButton userId={_id} />
+                    </TableCell>
                 </TableRow>
             ));
         }}
