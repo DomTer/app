@@ -9,7 +9,7 @@ import Button from '@material-ui/core/Button';
 const ADD_USER = gql`
     mutation AddUser($mail: String!, $password: String, $gender: String, $forename: String, $surname: String) {
         addUser(mail: $mail, password: $password, gender: $gender, forename: $forename, surname: $surname) {
-            id
+            _id
             mail
             password
             gender

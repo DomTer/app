@@ -11,6 +11,8 @@ const db = {
 
 const url =  `mongodb+srv://${db.user}:${db.pass}@${db.host}/${db.name}?retryWrites=true&w=majority`;
 
+mongoose.set('useFindAndModify', false); // https://mongoosejs.com/docs/deprecations.html#-findandmodify-
+
 mongoose.connect(url, { useNewUrlParser: true }).
 catch(error => console.log(error));
 

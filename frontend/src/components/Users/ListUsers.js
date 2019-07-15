@@ -55,7 +55,7 @@ const GetUsers = () => (
         query={gql`
       {
         getUsers{
-            id
+            _id
             mail
             password
             gender
@@ -73,9 +73,9 @@ const GetUsers = () => (
             );
             if (error) return <p>{JSON.stringify(error)}</p>;
 
-            return data.getUsers.map(({id, mail, password, forename, gender, surname}) => (
-                <TableRow key={id}>
-                    <TableCell component="th" scope="row">{id}</TableCell>
+            return data.getUsers.map(({_id, mail, password, forename, gender, surname}) => (
+                <TableRow key={_id}>
+                    <TableCell component="th" scope="row">{_id}</TableCell>
                     <TableCell align="left">{gender}</TableCell>
                     <TableCell align="left">{forename}</TableCell>
                     <TableCell align="left">{surname}</TableCell>
