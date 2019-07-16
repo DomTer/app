@@ -68,7 +68,7 @@ const GetUsers = () => (
       }
     `}
     >
-        {({loading, error, data}) => {
+        {({loading, error, data, refetch}) => {
             if (loading) return (
                 <TableRow key="loading">
                     <TableCell component="th" colSpan="6" scope="row">LOADING...</TableCell>
@@ -85,7 +85,7 @@ const GetUsers = () => (
                     <TableCell align="left">{mail}</TableCell>
                     <TableCell align="left">{password}</TableCell>
                     <TableCell align="right">
-                        <DeleteUserButton userId={_id} />
+                        <DeleteUserButton userId={_id} refetch={refetch} />
                     </TableCell>
                 </TableRow>
             ));
