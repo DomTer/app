@@ -14,6 +14,7 @@ import DeleteUserButton from "./DeleteUserButton";
 const useStyles = makeStyles(theme => ({
     root: {
         width: '100%',
+        minWidth: '1024px',
         justifyContent: 'center',
     },
     paper: {
