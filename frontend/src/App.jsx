@@ -5,8 +5,8 @@ import Box from '@material-ui/core/Box';
 import {ApolloProvider} from "react-apollo";
 import ApolloClient from "apollo-boost";
 import SignUp from "./components/Login/SignUp";
-import ListUsers from "./components/Users/ListUsers";
-import NavBar from "./components/NavBar"
+import GetUsersTable from "./components/Users/GetUsersTable";
+import NavBar from "./components/NavBar";
 
 
 const useStyles = makeStyles(theme => ({
@@ -48,11 +48,8 @@ function App() {
                     </Grid>
                 </Box>
                 <Grid className={classes.content} item xs={11}>
-
-                        <ListUsers style={{backgroundColor: 'cyan'}}/>
-
-                        <SignUp style={{backgroundColor: 'blue'}}/>
-
+                    <GetUsersTable style={{backgroundColor: 'cyan'}}/>
+                    <SignUp style={{backgroundColor: 'blue'}}/>
                 </Grid>
             </Grid>
         </ApolloProvider>

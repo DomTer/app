@@ -1,6 +1,5 @@
 import React from 'react';
 import {Query} from "react-apollo";
-import {gql} from "apollo-boost";
 import TableRow from "@material-ui/core/TableRow";
 import TableCell from "@material-ui/core/TableCell";
 import Paper from "@material-ui/core/Paper";
@@ -10,6 +9,7 @@ import TableBody from "@material-ui/core/TableBody";
 import {makeStyles} from "@material-ui/core";
 
 import DeleteUserButton from "./DeleteUserButton";
+import {GET_USERS_QUERY} from "./GetUsersQuery";
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -28,7 +28,7 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
-export default function ListUsers(){
+export default function GetUsersTable() {
     const classes = useStyles();
     return (
         <div className={classes.root}>
@@ -46,52 +46,37 @@ export default function ListUsers(){
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                        <GetUsers/>
+                        <Query
+                            query={GET_USERS_QUERY}
+                        >
+                            {({loading, error, data, refetch}) => {
+                                if (loading) return (
+                                    <TableRow key="loading">
+                                        <TableCell component="th" colSpan="6" scope="row">LOADING...</TableCell>
+                                    </TableRow>
+                                );
+                                if (error) return <p>{JSON.stringify(error)}</p>;
+
+                                return data.getUsers.map(({_id, mail, password, forename, gender, surname}) => (
+                                    <TableRow key={_id}>
+                                        <TableCell component="th" scope="row">{_id}</TableCell>
+                                        <TableCell align="left">{gender}</TableCell>
+                                        <TableCell align="left">{forename}</TableCell>
+                                        <TableCell align="left">{surname}</TableCell>
+                                        <TableCell align="left">{mail}</TableCell>
+                                        <TableCell align="left">{password}</TableCell>
+                                        <TableCell align="right">
+                                            <DeleteUserButton userId={_id} refetch={refetch}/>
+                                        </TableCell>
+                                    </TableRow>
+                                ));
+                            }}
+                        </Query>
                     </TableBody>
                 </Table>
             </Paper>
         </div>
     );
 }
-
-const GetUsers = () => (
-    <Query
-        query={gql`
-      {
-        getUsers{
-            _id
-            mail
-            password
-            gender
-            forename
-            surname
-        }
-      }
-    `}
-    >
-        {({loading, error, data, refetch}) => {
-            if (loading) return (
-                <TableRow key="loading">
-                    <TableCell component="th" colSpan="6" scope="row">LOADING...</TableCell>
-                </TableRow>
-            );
-            if (error) return <p>{JSON.stringify(error)}</p>;
-
-            return data.getUsers.map(({_id, mail, password, forename, gender, surname}) => (
-                <TableRow key={_id}>
-                    <TableCell component="th" scope="row">{_id}</TableCell>
-                    <TableCell align="left">{gender}</TableCell>
-                    <TableCell align="left">{forename}</TableCell>
-                    <TableCell align="left">{surname}</TableCell>
-                    <TableCell align="left">{mail}</TableCell>
-                    <TableCell align="left">{password}</TableCell>
-                    <TableCell align="right">
-                        <DeleteUserButton userId={_id} refetch={refetch} />
-                    </TableCell>
-                </TableRow>
-            ));
-        }}
-    </Query>
-);
 
 
