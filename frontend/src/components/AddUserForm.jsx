@@ -4,7 +4,7 @@ import {makeStyles} from '@material-ui/core/styles';
 import MenuItem from '@material-ui/core/MenuItem';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
-import {GET_USERS_QUERY} from "../Users/GetUsersQuery";
+import {GET_USERS_QUERY} from "./GetUsersQuery";
 import {ADD_USER_MUTATION} from "./AddUserMutation";
 
 const useStyles = makeStyles(theme => ({
@@ -42,7 +42,7 @@ const genders = [
 
 ];
 
-export default function SignUp() {
+export default function AddUserForm() {
 
     const classes = useStyles();
     const [values, setValues] = React.useState({
